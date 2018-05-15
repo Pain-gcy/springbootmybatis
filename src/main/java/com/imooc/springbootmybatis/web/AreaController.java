@@ -43,6 +43,18 @@ public class AreaController {
         map.put("success",areaService.insertArea(area));
         return map;
     }
+    @PostMapping(value = "/updatearea")
+    public Map<String,Object> updateArea(@RequestBody Area area){
+        Map<String,Object> map = new HashMap<>();
+        map.put("success",areaService.updateArea(area));
+        return map;
+    }
+    @GetMapping(value = "/deletearea")
+    public Map<String,Object> deleteArea(Integer id){
+        Map<String,Object> map = new HashMap<>();
+        map.put("success",areaService.deleteArea(id));
+        return map;
+    }
 
 
 
