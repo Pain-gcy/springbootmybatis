@@ -5,3 +5,16 @@ spring:
 mybatis_config_file: mybatis-config.xml
 mapper_path: /mapper/**.xml
 entity_package: com.imooc.springbootmybatis.entity
+
+#配置日志
+logging:
+  path: \data1\logs\springbootmybatis\
+  #配置日志文件路径
+  level:
+    com.imooc.springbootmybatis: debug #不同目录下的日志可配置不同级别
+    org.springfromework.web: info
+    org.hibernate: error
+  #采用相对路径方式将日志文件输出到【log\myspringboot.log】
+  file: \data1\logs\springbootmybatis\myspringboot.log
+  pattern:
+    dateformat: yyyy-MM-dd
