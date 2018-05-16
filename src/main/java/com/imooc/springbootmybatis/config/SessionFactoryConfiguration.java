@@ -26,7 +26,7 @@ public class SessionFactoryConfiguration {
     @Qualifier("dataSource")
     private DataSource dataSource;
     @Value("${entity_package}")
-    private String entityPachage;
+    private String entityPackage;
 
     @Bean("sqlSessionFactory")
     public SqlSessionFactoryBean createSqlSessionFactoryBean() throws IOException {
@@ -42,7 +42,7 @@ public class SessionFactoryConfiguration {
         //设置数据源
         sqlSessionFactoryBean.setDataSource(dataSource);
         //设置实体类的路径
-        sqlSessionFactoryBean.setTypeAliasesPackage(entityPachage);
+        sqlSessionFactoryBean.setTypeAliasesPackage(entityPackage);
         return sqlSessionFactoryBean;
 
     }

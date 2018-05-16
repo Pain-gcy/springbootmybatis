@@ -13,8 +13,8 @@
 
         <!--开启驼峰命名 table（create_time）————>entity（createTime）  -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
-
     </settings>
+
 
 
 </configuration>

@@ -1,5 +1,6 @@
 package com.imooc.springbootmybatis.service.impl;
 
+
 import com.imooc.springbootmybatis.config.dao.AreaDao;
 import com.imooc.springbootmybatis.entity.Area;
 import com.imooc.springbootmybatis.service.AreaService;
@@ -20,7 +21,9 @@ import java.util.List;
 
 @Service
 public class AreaServiceImpl implements AreaService {
+
     protected static Logger logger= LoggerFactory.getLogger(AreaServiceImpl.class);
+
     @Autowired
     private AreaDao areaDao;
 
@@ -33,6 +36,7 @@ public class AreaServiceImpl implements AreaService {
 
     @Override
     public Area queryAreaById(int id) {
+        logger.info("传入的id："+id);
         return areaDao.queryAreaById(id);
     }
 
