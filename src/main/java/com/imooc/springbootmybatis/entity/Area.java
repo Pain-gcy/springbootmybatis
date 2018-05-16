@@ -63,4 +63,15 @@ public class Area implements Serializable{
     public void setLastEditTime(String lastEditTime) {
         this.lastEditTime = lastEditTime;
     }
+
+    @Override
+    public String toString() {
+        return "Area{" +
+                "id=" + id +
+                ", areaName='" + areaName + '\'' +
+                ", areaCode='" + areaCode + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", lastEditTime='" + lastEditTime + '\'' +
+                '}';
+    }
 }

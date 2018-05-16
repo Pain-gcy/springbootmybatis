@@ -5,3 +5,8 @@ spring:
 mybatis_config_file: mybatis-config.xml
 mapper_path: /mapper/**.xml
 entity_package: com.imooc.springbootmybatis.entity
+
+###日志配置
+logging:
+  config: classpath:logback-boot.xml
+
