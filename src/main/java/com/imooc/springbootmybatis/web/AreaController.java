@@ -24,7 +24,7 @@ public class AreaController {
     @GetMapping(value = "/list")
     public Map<String,Object> getAreaList(){
         Map<String,Object> map = new HashMap<>();
-        List<Area> areas = areaService.queryAreaList();
+        String areas = areaService.queryAreaList();
         map.put("arealist",areas);
         return map;
     }

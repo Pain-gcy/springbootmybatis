@@ -1,16 +1,20 @@
 package com.imooc.springbootmybatis.service.impl;
 
 
+import com.google.gson.Gson;
 import com.imooc.springbootmybatis.config.dao.AreaDao;
 import com.imooc.springbootmybatis.entity.Area;
 import com.imooc.springbootmybatis.service.AreaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +22,6 @@ import java.util.List;
  * @author E470
  * @create 2018 - 05 - 15 10:37
  */
-
 @Service
 public class AreaServiceImpl implements AreaService {
 
@@ -27,11 +30,22 @@ public class AreaServiceImpl implements AreaService {
     @Autowired
     private AreaDao areaDao;
 
+    //redis缓存
+    @Autowired
+    private RedisTemplate redisTemplate;
     @Override
-    public List<Area> queryAreaList() {
-        List<Area> areas = areaDao.queryAreaList();
-        logger.info("{}",areas.toString());
-        return areas;
+    public String queryAreaList() {
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        String info = (String)valueOperations.get("info");
+        if (!"".equals(info)){
+
+            return info;
+        }else {
+            List<Area> areas = areaDao.queryAreaList();
+            valueOperations.set("info",areas.toString());
+            logger.info("{}",areas.toString());
+            return areas.toString();
+        }
     }
 
     @Override
