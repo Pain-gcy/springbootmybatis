@@ -1,7 +1,7 @@
 spring:
   profiles:
     active: dev
-## 缓存
+## redis缓存配置
   cache:
     type: redis
   redis:
@@ -22,7 +22,9 @@ spring:
     #超时连接时长
     timeout: 10000
       #连接超时时间
-####mybatis comfig
+
+
+####mybatis config
 mybatis_config_file: mybatis-config.xml
 mapper_path: /mapper/**.xml
 entity_package: com.imooc.springbootmybatis.entity

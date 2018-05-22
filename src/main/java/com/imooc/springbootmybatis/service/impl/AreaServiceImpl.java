@@ -3,6 +3,7 @@ package com.imooc.springbootmybatis.service.impl;
 
 import com.google.gson.Gson;
 import com.imooc.springbootmybatis.config.dao.AreaDao;
+import com.imooc.springbootmybatis.config.service.IRedisService;
 import com.imooc.springbootmybatis.entity.Area;
 import com.imooc.springbootmybatis.service.AreaService;
 import org.slf4j.Logger;
@@ -33,16 +34,21 @@ public class AreaServiceImpl implements AreaService {
     //redis缓存
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private IRedisService redisService;
     @Override
     public String queryAreaList() {
-        ValueOperations valueOperations = redisTemplate.opsForValue();
-        String info = (String)valueOperations.get("info");
+       /* ValueOperations valueOperations = redisTemplate.opsForValue();
+        String info = (String)valueOperations.get("info");*/
+        String info = redisService.get("info");
         if (!"".equals(info)){
 
             return info;
         }else {
             List<Area> areas = areaDao.queryAreaList();
-            valueOperations.set("info",areas.toString());
+            //valueOperations.set("info",areas.toString());
+            redisService.set("info",areas.toString());
+
             logger.info("{}",areas.toString());
             return areas.toString();
         }
