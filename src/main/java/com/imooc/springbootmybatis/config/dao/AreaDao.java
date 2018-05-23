@@ -1,6 +1,7 @@
 package com.imooc.springbootmybatis.config.dao;
 
 import com.imooc.springbootmybatis.entity.Area;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

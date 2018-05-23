@@ -45,5 +45,4 @@ public class RedisConfig {
         template.afterPropertiesSet();
         return template;
     }
-    private static Logger logger = LoggerFactory.getLogger(RedisConfig.class);
 }

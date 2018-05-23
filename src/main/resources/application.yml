@@ -1,3 +1,11 @@
+#数据库配置
+jdbc:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://10.29.130.240:3306/test?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=UTF8
+  username: gitv_rd
+  password: 1234.gitv_rd
+
+
 spring:
   profiles:
     active: dev
@@ -24,7 +32,9 @@ spring:
       #连接超时时间
 
 
-####mybatis config
+
+
+####mybatis 配置
 mybatis_config_file: mybatis-config.xml
 mapper_path: /mapper/**.xml
 entity_package: com.imooc.springbootmybatis.entity

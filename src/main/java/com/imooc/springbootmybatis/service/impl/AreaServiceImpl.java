@@ -34,12 +34,14 @@ public class AreaServiceImpl implements AreaService {
     //redis缓存
     @Autowired
     private RedisTemplate redisTemplate;
+
+    //Redis 缓存服务接口
     @Autowired
     private IRedisService redisService;
     @Override
     public String queryAreaList() {
-       /* ValueOperations valueOperations = redisTemplate.opsForValue();
-        String info = (String)valueOperations.get("info");*/
+  /*     ValueOperations valueOperations = redisTemplate.opsForValue();
+        String info1 = (String)valueOperations.get("info");*/
         String info = redisService.get("info");
         if (!"".equals(info)){
 
