@@ -43,7 +43,7 @@ public class AreaServiceImpl implements AreaService {
   /*     ValueOperations valueOperations = redisTemplate.opsForValue();
         String info1 = (String)valueOperations.get("info");*/
         String info = redisService.get("info");
-        if (!"".equals(info)){
+        if (!StringUtils.isEmpty(info)){
 
             return info;
         }else {
