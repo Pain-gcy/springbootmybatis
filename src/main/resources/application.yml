@@ -36,7 +36,7 @@ spring:
 
 ####mybatis 配置
 mybatis_config_file: mybatis-config.xml
-mapper_path: /mapper/**.xml
+mapper_path: /com/**/mapper/**.xml
 entity_package: com.imooc.springbootmybatis.entity
 
 
