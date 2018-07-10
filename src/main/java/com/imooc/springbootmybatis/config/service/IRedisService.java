@@ -8,6 +8,7 @@ import java.util.List;
  */
 public interface IRedisService {
     public boolean set(String key, String value);
+    public boolean set(String key, String value,long expire);
 
     public String get(String key);
 

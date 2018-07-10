@@ -40,17 +40,14 @@ public class AreaServiceImpl implements AreaService {
     private IRedisService redisService;
     @Override
     public String queryAreaList() {
-  /*     ValueOperations valueOperations = redisTemplate.opsForValue();
-        String info1 = (String)valueOperations.get("info");*/
         String info = redisService.get("info");
         if (!StringUtils.isEmpty(info)){
-
             return info;
         }else {
             List<Area> areas = areaDao.queryAreaList();
             //valueOperations.set("info",areas.toString());
             redisService.set("info",areas.toString());
-
+            redisService.expire("info",60*5);
             logger.info("{}",areas.toString());
             return areas.toString();
         }

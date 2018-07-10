@@ -36,7 +36,5 @@ public class DataSourceConfiguration {
         //关闭数据库连接口不自动提交
         dataSource.setAutoCommitOnClose(false);
         return dataSource;
-
-
     }
 }

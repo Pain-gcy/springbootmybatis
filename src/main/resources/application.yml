@@ -15,8 +15,8 @@ spring:
   redis:
     database: 3
     host: 10.25.130.177
-    password:
-   # port: 6397
+#    password:
+#    port: 6397
     jedis:
       pool:
         #最大连接数
@@ -30,6 +30,19 @@ spring:
     #超时连接时长
     timeout: 10000
       #连接超时时间
+
+
+## 主从配置
+## name of Redis server  哨兵监听的Redis server的名称
+#spring_redis_sentinel_master: sn_charging_master
+##comma-separated list of host:port pairs  哨兵的配置列表
+#spring_redis_sentinel_nodes: 10.29.130.44:26379,10.29.130.45:26379,10.29.130.45:26380
+#spring_redis_host: 10.29.130.45
+#spring_redis_port: 16380
+#spring_redis_timeout: 5000
+#spring_redis_database: 3
+#spring_redis_password: rEHIMVslxyNmRczB
+
 
 
 
