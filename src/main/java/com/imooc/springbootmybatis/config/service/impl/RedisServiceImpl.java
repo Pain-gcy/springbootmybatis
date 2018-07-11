@@ -1,5 +1,8 @@
 package com.imooc.springbootmybatis.config.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.imooc.springbootmybatis.config.service.IRedisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,7 +74,7 @@ public class RedisServiceImpl implements IRedisService {
 
     @Override
     public <T> boolean setList(String key, List<T> list) {
-        String value = new Gson().toJson(list);
+        String value = JSON.toJSONString(list);
         return set(key,value);
     }
 
@@ -79,8 +82,7 @@ public class RedisServiceImpl implements IRedisService {
     public <T> List<T> getList(String key,Class<T> clz) {
         String json = get(key);
         if(json!=null){
-            Class aClass = new Gson().fromJson(json, clz.getClass());
-            List<T> list = new ArrayList<>();
+            List<T> list = JSONObject.parseArray(json,clz);
             return list;
         }
         return null;

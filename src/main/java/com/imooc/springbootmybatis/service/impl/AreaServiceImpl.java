@@ -46,8 +46,7 @@ public class AreaServiceImpl implements AreaService {
         }else {
             List<Area> areas = areaDao.queryAreaList();
             //valueOperations.set("info",areas.toString());
-            redisService.set("info",areas.toString());
-            redisService.expire("info",60*5);
+            redisService.set("info",areas.toString(),60*5);
             logger.info("{}",areas.toString());
             return areas.toString();
         }
